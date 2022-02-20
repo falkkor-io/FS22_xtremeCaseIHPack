@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="cutter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/vehicle.xsd">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+
+    <storeData>
+        <name>3050X TerraFlex 41FT</name>
+        <specs>
+            <workingWidth>12</workingWidth>
+            <combination xmlFilename="$data/vehicles/caseIH/axialFlow250/axialFlow250.xml" />
+            <combination xmlFilename="$data/vehicles/nardi/n60_40/n60_40.xml" />
+        </specs>
+        <functions>
+            <function>$l10n_function_cutter</function>
+        </functions>
+        <image>$data/vehicles/caseIH/terraFlex3050_41/store_terraFlex3050_41.png</image>
+        <price>150000</price>
+        <lifetime>1200</lifetime>
+        <rotation>0</rotation>
+        <brand>CASEIH</brand>
+        <category>cutters</category>
+        <shopTranslationOffset>0 -0.041 0</shopTranslationOffset>
+        <shopRotationOffset>-1.22 0 0</shopRotationOffset>
+        <vertexBufferMemoryUsage>4761584</vertexBufferMemoryUsage>
+        <indexBufferMemoryUsage>1219608</indexBufferMemoryUsage>
+        <textureMemoryUsage>3189648</textureMemoryUsage>
+        <instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+        <instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+    </storeData>
+
+    <base>
+        <typeDesc>$l10n_typeDesc_cutter</typeDesc>
+        <filename>$data/vehicles/caseIH/terraFlex3050_41/terraFlex3050_41.i3d</filename>
+        <size width="14.5" length="3.5" height="4.4" />
+        <speedLimit value="25" />
+        <components>
+            <component centerOfMass="0 0.2 0" solverIterationCount="10" mass="3900" />
+        </components>
+        <schemaOverlay attacherJointPosition="0 0" name="COMBINE_HEADER" />
+        <mapHotspot type="CUTTER" />
+    </base>
+
+    <wheels>
+        <wheelConfigurations>
+            <wheelConfiguration name="$l10n_configuration_valueDefault" price="0" brand="TRELLEBORG">
+                <wheels>
+                    <wheel filename="$data/shared/wheels/tires/trelleborg/T510/18x8_50R8.xml" isLeft="false">
+                        <physics rotSpeed="1" restLoad="0.5" repr="supportwheelLeft"  forcePointRatio="0.5" initialCompression="25" suspTravel="0.05" spring="53" damper="30" frictionScale="2.5" yOffset="0.02"/>
+                    </wheel>
+                    <wheel filename="$data/shared/wheels/tires/trelleborg/T510/18x8_50R8.xml" isLeft="true">
+                        <physics rotSpeed="1" restLoad="0.5" repr="supportwheelRight" forcePointRatio="0.5" initialCompression="25" suspTravel="0.05" spring="53" damper="30" frictionScale="2.5" yOffset="0.02"/>
+                    </wheel>
+                </wheels>
+            </wheelConfiguration>
+        </wheelConfigurations>
+
+        <rimColor>SHARED_WHITE1</rimColor>
+
+        <hubs>
+            <color0>SHARED_DA_METAL_BLACK</color0>
+            <color1 material="3">SHARED_GREY3</color1>
+            <hub linkNode="supportwheelLeft"  filename="$data/shared/wheels/hubs/hub_n5_1.xml" isLeft="false" scale="0.08 0.1 0.1" />
+            <hub linkNode="supportwheelRight" filename="$data/shared/wheels/hubs/hub_n5_1.xml" isLeft="true"  scale="0.08 0.1 0.1" />
+        </hubs>
+    </wheels>
+
+    <attachable>
+        <inputAttacherJoints>
+            <inputAttacherJoint node="attacherJoint" jointType="cutter" >
+                <heightNode node="heightNode01" />
+                <heightNode node="heightNode02" />
+                <heightNode node="heightNode03" />
+                <distanceToGround lower="0.3" upper="1.8" />
+            </inputAttacherJoint>
+        </inputAttacherJoints>
+    </attachable>
+
+    <connectionHoses>
+        <customTarget node="cnhMultiCoupler" type="cnhMultiCoupler" inputAttacherJointIndices="1">
+            <objectChange node="cnhMultiCoupler_cover" rotationActive="0 0 0" rotationInactive="-80 0 0"/>
+        </customTarget>
+        <customTarget node="electric" type="cnhElectricConnector" inputAttacherJointIndices="1">
+            <objectChange node="electric_cover" rotationActive="80 0 0" rotationInactive="0 0 0"/>
+        </customTarget>
+    </connectionHoses>
+
+    <powerTakeOffs>
+        <input inputAttacherJointIndices="1" inputNode="ptoLeft"  detachNode="ptoLeftDetached"  ptoName="LEFT_PTO" color="SHARED_BLACK1" decalColor="WALTERSCHEID_YELLOW1"/>
+        <input inputAttacherJointIndices="1" inputNode="ptoRight" detachNode="ptoRightDetached" ptoName="RIGHT_PTO" color="SHARED_BLACK1" decalColor="WALTERSCHEID_YELLOW1"/>
+    </powerTakeOffs>
+
+    <powerConsumer ptoRpm="540" neededMaxPtoPower="50"/>
+
+    <groundReferenceNodes>
+        <groundReferenceNode node="heightNode02" threshold="0.5" />
+    </groundReferenceNodes>
+
+    <workAreas>
+        <workArea type="cutter" functionName="processCutterArea" disableBackwards="true" >
+            <area startNode="workAreaStart" widthNode="workAreaWidth" heightNode="workAreaHeight" />
+            <groundReferenceNode index="1" />
+            <testAreas autoGenerate="true" zOffset="0.5" xOffset="0" length="0.6" numAreas="16" areaWidthScale="0.25"/>
+        </workArea>
+    </workAreas>
+
+    <animations>
+        <animation name="knifeAnimation" looping="true">
+            <part node="knifeMove" startTime="0.0" endTime="0.5" startTrans="0 0 0" endTrans="-0.06 0 0"/>
+            <part node="knifeMove" startTime="0.5" endTime="1.0" startTrans="-0.06 0 0" endTrans="0 0 0"/>
+
+            <part node="knifePartLeft" startTime="0.0" endTime="0.5" startRot="0 0 0" endRot="0 -30 0"/>
+            <part node="knifePartLeft" startTime="0.5" endTime="1.0" startRot="0 -30 0" endRot="0 0 0"/>
+
+            <part node="knifePartRight" startTime="0.0" endTime="0.5" startRot="0 0 0" endRot="0 -30 0"/>
+            <part node="knifePartRight" startTime="0.5" endTime="1.0" startRot="0 -30 0" endRot="0 0 0"/>
+
+            <part node="canolaExtension_sideKnifesLeft01" startTime="0" endTime="0.5" startTrans="0 0 0" endTrans="0 0 -0.075"/>
+            <part node="canolaExtension_sideKnifesLeft01" startTime="0.5" endTime="1" startTrans="0 0 -0.075" endTrans="0 0 0"/>
+            <part node="canolaExtension_sideKnifesLeft02" startTime="0" endTime="0.5" startTrans="0 0 0" endTrans="0 0 0.075"/>
+            <part node="canolaExtension_sideKnifesLeft02" startTime="0.5" endTime="1" startTrans="0 0 0.075" endTrans="0 0 0"/>
+
+            <part node="canolaExtension_sideKnifesRight01" startTime="0" endTime="0.5" startTrans="0 0 0" endTrans="0 0 -0.075"/>
+            <part node="canolaExtension_sideKnifesRight01" startTime="0.5" endTime="1" startTrans="0 0 -0.075" endTrans="0 0 0"/>
+            <part node="canolaExtension_sideKnifesRight02" startTime="0" endTime="0.5" startTrans="0 0 0" endTrans="0 0 0.075"/>
+            <part node="canolaExtension_sideKnifesRight02" startTime="0.5" endTime="1" startTrans="0 0 0.075" endTrans="0 0 0"/>
+        </animation>
+
+        <animation name="variHeaderTrans">
+            <part node="variFeed"     startTime="0" endTime="0.9" startTrans="0 0 0" endTrans="0 0 0.4"/>
+            <part node="variFeedPart" startTime="0" endTime="0.9" startRot="0 0 0" endRot="-15.850 0 0"/>
+        </animation>
+    </animations>
+
+    <cylindered>
+        <movingTools>
+            <movingTool node="reelMove" playSound="true" >
+                <controls axis="AXIS_CUTTER_REEL" invertAxis="true" mouseSpeedFactor="0.25" iconName="REEL_TRANSLATE_X" />
+                <translation transSpeed="0.2" transAcceleration="50" transMin="0" transMax="0.415" translationAxis="3" startTrans="0"/>
+                <dependentPart node="reelMovePart01"/>
+            </movingTool>
+
+            <movingTool node="reelArm" playSound="true" >
+                <controls axis="AXIS_CUTTER_REEL2" invertAxis="true" mouseSpeedFactor="0.5" iconName="REEL_TRANSLATE_Y" />
+                <rotation rotSpeed="15" rotAcceleration="50" rotMin="-30" rotMax="-7" startRot="-25"/>
+                <dependentPart node="reelArmHydraulic"/>
+                <dependentPart node="reelArmPart"/>
+            </movingTool>
+
+            <movingTool node="reel">
+                <dependentPart node="spikes01" />
+                <dependentPart node="spikes02" />
+                <dependentPart node="spikes03" />
+                <dependentPart node="spikes04" />
+                <dependentPart node="spikes05" />
+                <dependentPart node="spikes06" />
+            </movingTool>
+        </movingTools>
+
+        <movingParts>
+            <movingPart node="spikes01" referencePoint="spikes01Ref" referenceFrame="terraFlex3050_41_main_component1"/>
+            <movingPart node="spikes02" referencePoint="spikes02Ref" referenceFrame="terraFlex3050_41_main_component1"/>
+            <movingPart node="spikes03" referencePoint="spikes03Ref" referenceFrame="terraFlex3050_41_main_component1"/>
+            <movingPart node="spikes04" referencePoint="spikes04Ref" referenceFrame="terraFlex3050_41_main_component1"/>
+            <movingPart node="spikes05" referencePoint="spikes05Ref" referenceFrame="terraFlex3050_41_main_component1"/>
+            <movingPart node="spikes06" referencePoint="spikes06Ref" referenceFrame="terraFlex3050_41_main_component1"/>
+
+            <movingPart node="reelArmHydraulic" referencePoint="reelArmHydraulicRef" referenceFrame="reelArmHydraulicRef" >
+                <translatingPart node="reelArmHydraulicPunch" />
+            </movingPart>
+
+            <movingPart node="reelMovePart01" localReferencePoint="reelMovePart02" referencePoint="reelMovePart02Ref" referenceFrame="reelMovePart01RefFrame" >
+                <dependentPart node="reelMovePart02" />
+            </movingPart>
+            <movingPart node="reelMovePart02" referencePoint="reelMovePart02Ref" referenceFrame="reelMovePart02Ref" />
+
+            <movingPart node="reelArmPart" referencePoint="reelArmPartRef" referenceFrame="reelArmPartRef" />
+        </movingParts>
+
+        <sounds>
+            <hydraulic template="defaultHydraulicSound" pitchScale="1.2" volumeScale="1.0" fadeIn="0.1" fadeOut="0.05" linkNode="0>"/>
+        </sounds>
+    </cylindered>
+
+    <cutter fruitTypeCategories="grainHeader">
+        <fruitExtraObjects>
+            <fruitExtraObject fruitType="canola"  node="canolaExtension" anim="variHeaderTrans"/>
+            <fruitExtraObject fruitType="wheat"   node="grainExtension" isDefault="true"/>
+            <fruitExtraObject fruitType="barley"  node="grainExtension"/>
+            <fruitExtraObject fruitType="soybean" node="grainExtension"/>
+            <fruitExtraObject fruitType="oat"     node="grainExtension"/>
+            <fruitExtraObject fruitType="sorghum" node="grainExtension"/>
+        </fruitExtraObjects>
+
+        <effect>
+            <effectNode effectClass="CutterMotionPathEffect" effectType="CUTTER" linkNode="cutterEffectLinkNode">
+                <motionPathEffect textureFilename="$data/vehicles/caseIH/terraFlex3050_41/drumArray.dds" numRows="32" rowLength="42" minFade="0.06" textureRealWidth="16" speedScale="0.17"/>
+            </effectNode>
+        </effect>
+
+        <fillEffect>
+            <effectNode effectClass="ParticleEffect" effectNode="smokeEmitter" particleType="SMOKE" materialType="smokeParticle" emitCountScale="0.1" worldSpace="false" useCuttingWidth="false" useFruitColor="true"/>
+        </fillEffect>
+
+        <animationNodes>
+            <animationNode node="drumMain"  rotAxis="1" rotSpeed="700" turnOnFadeTime="2" turnOffFadeTime="3"/>
+            <animationNode node="reel"      rotAxis="1" rotSpeed="210" turnOnFadeTime="2" turnOffFadeTime="3"/>
+            <animationNode node="reelPart"  rotAxis="1" rotSpeed="210" turnOnFadeTime="2" turnOffFadeTime="3"/>
+        </animationNodes>
+
+        <automaticTilt raycastNode1="heightNode01" raycastNode2="heightNode03"/>
+        <sounds>
+            <cut template="cropCutting" />
+        </sounds>
+    </cutter>
+
+    <turnOnVehicle turnedOnByAttacherVehicle="true">
+        <turnedOnAnimation name="knifeAnimation" speedScale="6" turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <sounds>
+            <start template="HARVESTER_TOOL_START" volumeScale="1.5" />
+            <work  template="HARVESTER_TOOL_WORK"  volumeScale="1.5" />
+            <stop  template="HARVESTER_TOOL_STOP"  volumeScale="1.5" />
+        </sounds>
+    </turnOnVehicle>
+
+    <dynamicMount forceLimitScale="1" />
+
+    <ai>
+        <areaMarkers leftNode="aiMarkerLeft" rightNode="aiMarkerRight" backNode="aiMarkerBack" />
+        <collisionTrigger node="aiCollisionNode" width="13.4" height="2.0"/>
+        <agentAttachment width="13.2" height="2.8" length="3" lengthOffset="0.3"/>
+    </ai>
+
+    <foliageBending>
+        <bendingNode minX="-6.6" maxX="6.6" minZ="-1" maxZ="0.2" yOffset="0.35" />
+    </foliageBending>
+
+    <designConfigurations>
+        <designConfiguration name="Case IH" price="0">
+            <objectChange node="brandCaseIH01_decals" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="brandCaseIH02_decals" visibilityActive="true" visibilityInactive="false"/>
+            <material name="terraFlex3050_41_mat" shaderParameter="colorMat0" color="CASEIH_RED1"/>
+            <material name="terraFlex3050_41_mat" shaderParameter="colorMat1" color="CASEIH_RED1"/>
+            <material name="terraFlex3050_41_mat" shaderParameter="colorMat2" color="CASEIH_RED1"/>
+            <material name="canolaModules_mat" shaderParameter="colorMat0" color="CASEIH_RED1"/>
+            <material name="canolaModules_mat" shaderParameter="colorMat1" color="CASEIH_RED1"/>
+        </designConfiguration>
+        <designConfiguration name="New Holland" price="0" isSelectable="false" vehicleBrand="NEWHOLLAND" vehicleName="Varifeed 41FT" vehicleIcon="$data/vehicles/newHolland/varifeed41/store_varifeed41.png">
+            <objectChange node="brandNewHolland01_decals" visibilityActive="true" visibilityInactive="false"/>
+            <objectChange node="brandNewHolland02_decals" visibilityActive="true" visibilityInactive="false"/>
+            <material name="terraFlex3050_41_mat" shaderParameter="colorMat0" color="NEWHOLLAND_YELLOW1"/>
+            <material name="terraFlex3050_41_mat" shaderParameter="colorMat1" color="NEWHOLLAND_YELLOW1"/>
+            <material name="terraFlex3050_41_mat" shaderParameter="colorMat2" color="NEWHOLLAND_YELLOW1"/>
+            <material name="canolaModules_mat" shaderParameter="colorMat0" color="NEWHOLLAND_YELLOW1"/>
+            <material name="canolaModules_mat" shaderParameter="colorMat1" color="NEWHOLLAND_YELLOW1"/>
+        </designConfiguration>
+    </designConfigurations>
+
+    <baseMaterial>
+        <material name="terraFlex3050_41_mat" baseNode="terraFlex3050_41_vis">
+            <shaderParameter name="colorMat0" value="CASEIH_RED1"/>
+            <shaderParameter name="colorMat1" value="CASEIH_RED1"/>
+            <shaderParameter name="colorMat2" value="CASEIH_RED1"/>
+        </material>
+
+        <material name="canolaModules_mat" baseNode="canolaExtension_vis">
+            <shaderParameter name="colorMat0" value="CASEIH_RED1"/>
+            <shaderParameter name="colorMat1" value="CASEIH_RED1"/>
+        </material>
+    </baseMaterial>
+
+    <wearable wearDuration="480" workMultiplier="5" fieldMultiplier="2"/>
+    <washable dirtDuration="90" washDuration="1" workMultiplier="4" fieldMultiplier="2"/>
+
+    <i3dMappings>
+        <i3dMapping id="terraFlex3050_41_main_component1" node="0>" />
+        <i3dMapping id="terraFlex3050_41_vis" node="0>0" />
+        <i3dMapping id="attacherJoint" node="0>0|0|0" />
+        <i3dMapping id="heightNode01" node="0>0|0|1|0" />
+        <i3dMapping id="heightNode02" node="0>0|0|1|1" />
+        <i3dMapping id="heightNode03" node="0>0|0|1|2" />
+        <i3dMapping id="electric" node="0>0|0|2|0" />
+        <i3dMapping id="electric_cover" node="0>0|0|2|0|0" />
+        <i3dMapping id="cnhMultiCoupler" node="0>0|0|2|1" />
+        <i3dMapping id="cnhMultiCoupler_cover" node="0>0|0|2|1|0" />
+        <i3dMapping id="ptoLeft" node="0>0|0|3|0" />
+        <i3dMapping id="ptoRight" node="0>0|0|3|1" />
+        <i3dMapping id="ptoLeftDetached" node="0>0|0|3|2" />
+        <i3dMapping id="ptoRightDetached" node="0>0|0|3|3" />
+        <i3dMapping id="supportwheelLeft" node="0>0|1|0" />
+        <i3dMapping id="supportwheelRight" node="0>0|1|1" />
+        <i3dMapping id="drumMain" node="0>0|2|0" />
+        <i3dMapping id="reelArm" node="0>0|2|1" />
+        <i3dMapping id="reelMove" node="0>0|2|1|0|0" />
+        <i3dMapping id="reel" node="0>0|2|1|0|0|0" />
+        <i3dMapping id="spikes01" node="0>0|2|1|0|0|0|0" />
+        <i3dMapping id="spikes02" node="0>0|2|1|0|0|0|1" />
+        <i3dMapping id="spikes03" node="0>0|2|1|0|0|0|2" />
+        <i3dMapping id="spikes04" node="0>0|2|1|0|0|0|3" />
+        <i3dMapping id="spikes05" node="0>0|2|1|0|0|0|4" />
+        <i3dMapping id="spikes06" node="0>0|2|1|0|0|0|5" />
+        <i3dMapping id="reelPart" node="0>0|2|1|0|0|1" />
+        <i3dMapping id="spikes01Ref" node="0>0|2|1|0|0|1|0" />
+        <i3dMapping id="spikes02Ref" node="0>0|2|1|0|0|1|1" />
+        <i3dMapping id="spikes03Ref" node="0>0|2|1|0|0|1|2" />
+        <i3dMapping id="spikes04Ref" node="0>0|2|1|0|0|1|3" />
+        <i3dMapping id="spikes05Ref" node="0>0|2|1|0|0|1|4" />
+        <i3dMapping id="spikes06Ref" node="0>0|2|1|0|0|1|5" />
+        <i3dMapping id="reelMovePart01RefFrame" node="0>0|2|1|0|0|2" />
+        <i3dMapping id="reelMovePart01" node="0>0|2|1|0|0|2|0" />
+        <i3dMapping id="reelMovePart02" node="0>0|2|1|0|0|2|0|0" />
+        <i3dMapping id="reelArmPartRef" node="0>0|2|1|1" />
+        <i3dMapping id="reelArmHydraulicRef" node="0>0|2|1|2" />
+        <i3dMapping id="reelMovePart02Ref" node="0>0|2|1|3" />
+        <i3dMapping id="reelArmHydraulic" node="0>0|2|2" />
+        <i3dMapping id="reelArmHydraulicPunch" node="0>0|2|2|0" />
+        <i3dMapping id="reelArmPart" node="0>0|2|3" />
+        <i3dMapping id="variFeed" node="0>0|2|4" />
+        <i3dMapping id="grainExtension" node="0>0|2|4|0" />
+        <i3dMapping id="canolaExtension" node="0>0|2|4|1" />
+        <i3dMapping id="canolaExtension_vis" node="0>0|2|4|1|0" />
+        <i3dMapping id="canolaExtension_sideKnifesLeft01" node="0>0|2|4|1|0|0|0" />
+        <i3dMapping id="canolaExtension_sideKnifesLeft02" node="0>0|2|4|1|0|1|0" />
+        <i3dMapping id="canolaExtension_sideKnifesRight01" node="0>0|2|4|1|0|2|0" />
+        <i3dMapping id="canolaExtension_sideKnifesRight02" node="0>0|2|4|1|0|3|0" />
+        <i3dMapping id="knifeMove" node="0>0|2|4|2|0|0" />
+        <i3dMapping id="knifePartLeft" node="0>0|2|4|2|1|0" />
+        <i3dMapping id="knifePartRight" node="0>0|2|4|2|2|0" />
+        <i3dMapping id="variFeedPart" node="0>0|2|4|2|3" />
+        <i3dMapping id="brandCaseIH02_decals" node="0>0|2|4|3|0" />
+        <i3dMapping id="brandNewHolland02_decals" node="0>0|2|4|3|1" />
+        <i3dMapping id="workAreaStart" node="0>0|3|0" />
+        <i3dMapping id="workAreaWidth" node="0>0|3|1" />
+        <i3dMapping id="workAreaHeight" node="0>0|3|2" />
+        <i3dMapping id="groundReferenceNode" node="0>0|3|3" />
+        <i3dMapping id="cutterEffectLinkNode" node="0>0|4|0" />
+        <i3dMapping id="smokeEmitter" node="0>0|4|1" />
+        <i3dMapping id="aiMarkerLeft" node="0>0|5|0" />
+        <i3dMapping id="aiMarkerRight" node="0>0|5|1" />
+        <i3dMapping id="aiMarkerBack" node="0>0|5|2" />
+        <i3dMapping id="aiCollisionNode" node="0>0|5|3" />
+        <i3dMapping id="brandCaseIH01_decals" node="0>0|6|0" />
+        <i3dMapping id="brandNewHolland01_decals" node="0>0|6|1" />
+    </i3dMappings>
+</vehicle>

@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="63">
+    <author>Falkkor</author>
+    <version>1.0.0.0</version>
+    <title>
+        <en>Xtreme CaseIH Pack</en>
+    </title>
+    <description>
+        <en><![CDATA[This mod pack for Farming Simulator 22 features your favorite CaseIH machinery (including Sugar Cane, Cotton and Baling) but now enhanced with eXtra power, eXtreme speed and eXciting performance! 
+
+        All store items in this mod feature: 
+            - Double the lifespan for durability (titanium components)
+            - Adjusted pricing for realism (turbos ain't cheap)
+            - Highest quality 3D models for configuration (see credits)
+            - Realistic Power/Torque Curves, Gear Ratios and Speeds (see credits)
+        
+        Magnum 7250X Pro: 
+            - 300 HP / 220 KW
+            - 832 LB-FT / 1129 NM
+            - 46 MPH / 75 KPH 
+            - $175,000 USD
+        
+        Magnum PowerDrive 400X: 
+            - 600 HP / 440 KW 
+            - 1664 LB-FT / 2258 NM 
+            - 46 MPH / 75 KPH 
+            - $375,000 USD 
+
+        Maxxum CVX 145X: 
+            - 250 HP / 220 KW
+            - 832 LB-FT / 1129 NM
+            - 46 MPH / 75 KPH 
+            - $175,000 USD
+
+        Steiger 4WD 620X: 
+            - 900 HP / 660 KW 
+            - 2496 LB-FT / 3387 NM 
+            - 46 MPH / 75 KPH 
+            - $425,000 USD
+
+        Steiger Quadtrac 620X: 
+            - 900 HP / 660 KW 
+            - 2496 LB-FT / 3387 NM 
+            - 46 MPH / 75 KPH 
+            - $425,000 USD
+
+        Steiger Rowtrac 420X: 
+            - 900 HP / 660 KW 
+            - 2496 LB-FT / 3387 NM 
+            - 46 MPH / 75 KPH 
+            - $425,000 USD
+        
+        Axial Flow 7150X: 
+            - 550 HP / 410 KW 
+            - 1682 LB-FT / 2281 NM 
+            - 31 MPH / 50 KPH
+            - 14,500 Liter Capacity
+            - Doubled Unload Speed  
+            - $350,000 USD
+
+        Axial Flow 9250X: 
+            - 750 HP / 559 KW 
+            - 2366 LB-FT / 3208 NM 
+            - 31 MPH / 50 KPH
+            - 22,000 Liter Capacity
+            - Doubled Unload Speed  
+            - $475,000 USD
+
+        Module Express 635X: 
+            - 550 HP / 410 KW 
+            - 1682 LB-FT / 2281 NM 
+            - 31 MPH / 50 KPH
+            - $550,000 USD
+
+        Austoft 8800X Multi-Row: 
+            - 400 HP / 298 KW
+            - 1261 LB-FT / 1710 NM
+            - 12 MPH / 20 KPH
+            - $425,000 USD 
+
+        Header 4408X: 
+            - 31 MPH / 50 KPH
+            - $50,000 USD
+
+        Header 4418NX: 
+            - 16 MPH / 25 KPH
+            - $50,000 USD
+
+        TerraFlex 3020X: 
+            - 16 MPH / 25 KPH
+            - $75,000 USD
+
+        TerraFlex 28 3050X: 
+            - 16 MPH / 25 KPH
+            - $100,000 USD
+
+        TerraFlex 41 3050X: 
+            - 16 MPH / 25 KPH
+            - $150,000 USD
+
+        Diamant 8X: 
+            - 16 MPH / 25 KPH
+            - $75,000 USD
+
+        Diamant 12X: 
+            - 16 MPH / 25 KPH
+            - $125,000 USD
+
+        Helianthus 5700X: 
+            - 16 MPH / 25 KPH
+            - $50,000 USD
+
+        Helianthus 12000X: 
+            - 16 MPH / 25 KPH
+            - $125,000 USD
+
+        LB436HDX: 
+            - 16 MPH / 25 KPH
+            - $175,000 USD
+
+        SpeedTiller 465X: 
+            - 16 MPH / 25 KPH
+            - $50,000 USD
+
+        SpeedTiller 475X: 
+            - 16 MPH / 25 KPH
+            - $150,000 USD
+
+        Credits: 
+            - GIANTS Software - https://farming-simulator.com/ 
+            - Jens Ejvinsson and Stegei @ GIANTS Software for Power Interpolation Formulae
+            
+        Contact:
+            - info@falkkor.io 
+            - https://falkkor.io]]></en>
+    </description>
+    <iconFilename>store_xtremecaseihpack.png</iconFilename>
+    <multiplayer supported="true" />
+    <storeItems>
+        <storeItem xmlFilename="vehicles/magnum7250XPro/magnum7250XPro.xml"/>
+        <storeItem xmlFilename="vehicles/magnumT4BX.xml"/>
+        <storeItem xmlFilename="vehicles/maxxum145CVXX.xml"/>
+        <storeItem xmlFilename="vehicles/steiger4WDX.xml"/>
+        <storeItem xmlFilename="vehicles/steigerQuadtracX.xml"/>
+        <storeItem xmlFilename="vehicles/steigerRowtracX.xml"/>
+        <storeItem xmlFilename="vehicles/axialFlow150X.xml"/>
+        <storeItem xmlFilename="vehicles/axialFlow250X.xml"/>
+        <storeItem xmlFilename="vehicles/moduleExpress635X.xml"/>
+        <storeItem xmlFilename="vehicles/a8800MRX.xml"/>
+        <storeItem xmlFilename="vehicles/draper3162X.xml"/>
+        <storeItem xmlFilename="vehicles/header4408X.xml"/>
+        <storeItem xmlFilename="vehicles/header4418NX.xml"/>
+        <storeItem xmlFilename="vehicles/terraFlex3020X.xml"/>
+        <storeItem xmlFilename="vehicles/terraFlex3050X_28.xml"/>
+        <storeItem xmlFilename="vehicles/terraFlex3050X_41.xml"/>
+        <storeItem xmlFilename="vehicles/diamant8X.xml"/>
+        <storeItem xmlFilename="vehicles/diamant12X.xml"/>
+        <storeItem xmlFilename="vehicles/helianthus12000X.xml"/>
+        <storeItem xmlFilename="vehicles/helianthus5700X.xml"/>
+        <storeItem xmlFilename="vehicles/lb436HDX.xml"/>
+        <storeItem xmlFilename="vehicles/speedtiller465X.xml"/>
+        <storeItem xmlFilename="vehicles/speedtiller475X.xml"/>
+    </storeItems>
+</modDesc>

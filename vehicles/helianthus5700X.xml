@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<vehicle type="cutter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/vehicle.xsd">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+
+    <storeData>
+        <name>Helianthus 5700X</name>
+        <specs>
+            <workingWidth>5.7</workingWidth>
+            <combination xmlFilename="$data/vehicles/deutzFahr/topLiner4090/topLiner4090.xml"/>
+            <combination xmlFilename="$data/vehicles/newHolland/chSeries/chSeries.xml"/>
+            <combination xmlFilename="$data/vehicles/johnDeere/t560/t560.xml"/>
+            <combination xmlFilename="$data/vehicles/caseIH/axialFlow150/axialFlow150.xml"/>
+            <combination xmlFilename="$data/vehicles/claas/trion750/trion750.xml"/>
+            <combination xmlFilename="$data/vehicles/nardi/n20T/n20T.xml"/>
+        </specs>
+        <functions>
+            <function>$l10n_function_cutter</function>
+        </functions>
+        <image>$data/vehicles/capello/helianthus5700/store_helianthus5700.png</image>
+        <price>50000</price>
+        <lifetime>1200</lifetime>
+        <rotation>0</rotation>
+        <brand>CAPELLO</brand>
+        <category>cutters</category>
+        <shopTranslationOffset>0 -0.013 0</shopTranslationOffset>
+        <shopRotationOffset>0.263 0 0</shopRotationOffset>
+        <vertexBufferMemoryUsage>1437816</vertexBufferMemoryUsage>
+        <indexBufferMemoryUsage>241398</indexBufferMemoryUsage>
+        <textureMemoryUsage>1223520</textureMemoryUsage>
+        <instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+        <instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+    </storeData>
+
+    <base>
+        <typeDesc>$l10n_typeDesc_cutter</typeDesc>
+        <filename>$data/vehicles/capello/helianthus5700/helianthus5700.i3d</filename>
+        <size width="7" length="3.3" lengthOffset="0.3"/>
+        <speedLimit value="25"/>
+        <components>
+            <component centerOfMass="0 0.4 0" mass="1550" />
+            <component                        mass="250" />
+            <joint component1="1" component2="2" node="componentJointCutterBar" rotLimit="0 0 0" transLimit="0 0 0"/>
+        </components>
+        <schemaOverlay attacherJointPosition="0 0" name="COMBINE_HEADER" />
+        <mapHotspot type="CUTTER" />
+    </base>
+
+    <attachable>
+        <inputAttacherJoints>
+            <inputAttacherJoint node="attacherJoint" jointType="cutter">
+                <heightNode node="heightNode01" />
+                <heightNode node="heightNode02" />
+                <heightNode node="heightNode03" />
+                <distanceToGround lower="0.6" upper="1.6" />
+            </inputAttacherJoint>
+        </inputAttacherJoints>
+
+        <lowerAnimation name="loweringAnimation"/>
+    </attachable>
+
+    <powerTakeOffs>
+        <input inputNode="ptoInputNodeLeft" inputAttacherJointIndices="1" aboveAttacher="true" ptoName="LEFT_PTO"/>
+        <input inputNode="ptoInputNodeRight" inputAttacherJointIndices="1" aboveAttacher="true" ptoName="RIGHT_PTO"/>
+    </powerTakeOffs>
+
+    <powerConsumer ptoRpm="540" neededMaxPtoPower="50"/>
+
+    <groundReferenceNodes>
+        <groundReferenceNode node="heightNode02" threshold="0.5" />
+    </groundReferenceNodes>
+
+    <workAreas>
+        <workArea type="cutter" functionName="processCutterArea" >
+            <area startNode="workAreaStart" widthNode="workAreaWidth" heightNode="workAreaHeight" />
+            <groundReferenceNode index="1" />
+            <chopperArea index="2" />
+            <testAreas autoGenerate="true" zOffset="0.5" xOffset="0" length="0.6" numAreas="8" areaWidthScale="0.25"/>
+        </workArea>
+        <workArea type="auxiliary" >
+            <area startNode="workAreaStrawStart" widthNode="workAreaStrawWidth" heightNode="workAreaStrawHeight" />
+        </workArea>
+    </workAreas>
+
+    <animations>
+        <animation name="knifeAnimation" looping="true">
+            <part node="blades" startTime="0" endTime="0.5" startTrans="0 0 0" endTrans="-0.06 0 0"/>
+            <part node="blades" startTime="0.5" endTime="1" startTrans="-0.06 0 0" endTrans="0 0 0"/>
+        </animation>
+        <animation name="loweringAnimation">
+            <part componentJointIndex="1" startTime="0" endTime="1.5" startTransMinLimit="0 0 0" startTransMaxLimit="0 0 0" endTransMinLimit="0 -0.5 0" endTransMaxLimit="0 0 0" startRotLimit="0 0 0" endRotLimit="0 0 5"/>
+
+            <sound template="defaultHydraulicSound" startTime="0.01" endTime="1.49" pitchScale="1.3" volumeScale="1" />
+            <sound template="foldStopSm02" startTime="0.2" direction="-1" pitchScale="0.8" volumeScale="1" />
+            <sound template="foldStartSm01" startTime="1.3" direction="1" pitchScale="0.7" volumeScale="1" />
+        </animation>
+    </animations>
+
+    <cylindered>
+        <movingTools>
+            <movingTool node="reelArm" playSound="true">
+                <controls axis="AXIS_CUTTER_REEL2" invertAxis="true" mouseSpeedFactor="0.3" iconName="REEL_TRANSLATE_Y" />
+                <rotation rotSpeed="20" rotAcceleration="50" rotMax="0" rotMin="-27" startRot="0"/>
+            </movingTool>
+        </movingTools>
+
+        <movingParts>
+            <movingPart node="cutterBarArmLeft" referencePoint="cutterBarArmLeftRef" referenceFrame="cutterBarArmLeftRefFrame" isActiveDirty="true" maxUpdateDistance="100">
+                <dependentPart node="cutterBarArmRight" />
+            </movingPart>
+            <movingPart node="cutterBarArmRight" referencePoint="cutterBarArmRightRef" referenceFrame="cutterBarArmRightRefFrame">
+                <dependentPart node="cutterBarXRot" />
+            </movingPart>
+            <movingPart node="cutterBarXRot" referencePoint="cutterBarXRotRef" referenceFrame="cutterBarXRotRefFrame">
+                <dependentPart node="cutterBar" />
+            </movingPart>
+            <movingPart node="cutterBar" referencePoint="cutterBarRef" referenceFrame="cutterBarRefFrame">
+                <dependentPart node="cutterBarHydraulicLeft" />
+                <dependentPart node="cutterBarHydraulicRight" />
+            </movingPart>
+
+            <movingPart node="cutterBarHydraulicLeft" referencePoint="cutterBarHydraulicLeftRef" referenceFrame="cutterBarHydraulicLeftRef">
+                <translatingPart node="cutterBarHydraulicLeftPunch" />
+            </movingPart>
+            <movingPart node="cutterBarHydraulicRight" referencePoint="cutterBarHydraulicRightRef" referenceFrame="cutterBarHydraulicRightRef">
+                <translatingPart node="cutterBarHydraulicRightPunch" />
+            </movingPart>
+        </movingParts>
+
+        <sounds>
+            <hydraulic template="defaultHydraulicSound" pitchScale="1.2" volumeScale="1.0" fadeIn="0.1" fadeOut="0.05" linkNode="0>"/>
+        </sounds>
+    </cylindered>
+
+    <cutter fruitTypes="sunflower">
+        <effect>
+            <effectNode effectClass="CutterMotionPathEffect" effectType="CUTTER" linkNode="effectNodePlant">
+                <motionPathEffect textureFilename="$data/vehicles/capello/helianthus5700/plantArray.dds" textureRealWidth="9" numRows="12" rowLength="8" verticalOffset="-0.25" minFade="0.19"/>
+            </effectNode>
+            <effectNode effectClass="CutterMotionPathEffect" effectType="CUTTER_FRUITS" linkNode="effectNodeFruit">
+                <motionPathEffect textureFilename="$data/vehicles/capello/helianthus5700/fruitArray.dds" textureRealWidth="9" numRows="12" rowLength="28" speedScale="0.23" verticalOffset="0" minFade="0.09" startDelay="0.4" stopDelay="0.6"/>
+            </effectNode>
+            <effectNode effectClass="CutterMotionPathEffect" effectType="CUTTER_THRESHING" linkNode="effectNodeThreshing">
+                <motionPathEffect textureFilename="$data/vehicles/capello/helianthus5700/threshingArray.dds" textureRealWidth="5.7" numRows="12" rowLength="10" verticalOffset="0" minFade="0.15" startDelay="0.2" stopDelay="0.6"/>
+            </effectNode>
+            <effectNode effectClass="ParticleEffect" effectNode="smokeEmitter" particleType="SMOKE" materialType="smokeParticle" emitCountScale="0.1" worldSpace="false" useCuttingWidth="false"/>
+        </effect>
+
+        <animationNodes>
+            <animationNode node="mainDrum" rotSpeed="900" rotAxis="1" turnOnFadeTime="1" turnOffFadeTime="2"/>
+            <animationNode node="reel" rotSpeed="400" rotAxis="1" turnOnFadeTime="1" turnOffFadeTime="2"/>
+            <animationNode node="cutterBlades" rotSpeed="1500" turnOnFadeTime="1" turnOffFadeTime="2" shaderParameterName="rotationAngle"/>
+        </animationNodes>
+
+        <automaticTilt raycastNode1="heightNode01" raycastNode2="heightNode03"/>
+        <sounds>
+            <cut template="cropCutting" />
+        </sounds>
+    </cutter>
+
+    <turnOnVehicle turnedOnByAttacherVehicle="true">
+        <turnedOnAnimation name="knifeAnimation" speedScale="6" turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <sounds>
+            <start template="HARVESTER_TOOL_START" volumeScale="1.5" />
+            <work template="HARVESTER_TOOL_WORK" volumeScale="1.5" />
+            <stop template="HARVESTER_TOOL_STOP" volumeScale="1.5" />
+        </sounds>
+    </turnOnVehicle>
+
+    <ai>
+        <areaMarkers leftNode="aiMarkerLeft" rightNode="aiMarkerRight" backNode="aiMarkerBack"/>
+        <collisionTrigger node="aiCollisionNode" width="6.4" height="1.3"/>
+        <agentAttachment width="6.4" height="2.5" length="3" lengthOffset="0.2"/>
+    </ai>
+
+    <dynamicMount forceLimitScale="1"/>
+
+    <baseMaterial>
+        <material name="helianthus5700_mat" baseNode="helianthus5700_vis">
+            <shaderParameter name="colorMat0" value="CAPELLO_BLACK1"/>
+            <shaderParameter name="colorMat1" value="CAPELLO_RED1"/>
+        </material>
+    </baseMaterial>
+
+    <foliageBending>
+        <bendingNode minX="-3.2" maxX="3.2" minZ="-0.6" maxZ="1.0" yOffset="0.3"/>
+    </foliageBending>
+
+    <wearable wearDuration="480" workMultiplier="5" fieldMultiplier="2"/>
+    <washable dirtDuration="90" washDuration="1" workMultiplier="4" fieldMultiplier="2"/>
+
+    <i3dMappings>
+        <i3dMapping id="helianthus5700_main_component1" node="0>" />
+        <i3dMapping id="helianthus5700_vis" node="0>0" />
+        <i3dMapping id="attacherJoint" node="0>0|0|0" />
+        <i3dMapping id="heightNode01" node="0>0|0|0|0" />
+        <i3dMapping id="heightNode02" node="0>0|0|0|1" />
+        <i3dMapping id="heightNode03" node="0>0|0|0|2" />
+        <i3dMapping id="ptoInputNodeLeft" node="0>0|0|1" />
+        <i3dMapping id="reelArm" node="0>0|1|0" />
+        <i3dMapping id="reel" node="0>0|1|0|2" />
+        <i3dMapping id="mainDrum" node="0>0|1|1" />
+        <i3dMapping id="blades" node="0>0|1|2" />
+        <i3dMapping id="componentJointCutterBar" node="0>0|1|3|0" />
+        <i3dMapping id="cutterBarArmLeftRefFrame" node="0>0|1|3|1" />
+        <i3dMapping id="cutterBarArmLeft" node="0>0|1|3|1|0" />
+        <i3dMapping id="cutterBarXRotRefFrame" node="0>0|1|3|1|0|0" />
+        <i3dMapping id="cutterBarXRot" node="0>0|1|3|1|0|0|0" />
+        <i3dMapping id="cutterBarRefFrame" node="0>0|1|3|1|0|0|0|0" />
+        <i3dMapping id="cutterBar" node="0>0|1|3|1|0|0|0|0|0" />
+        <i3dMapping id="effectNodeThreshing" node="0>0|1|3|1|0|0|0|0|0|0" />
+        <i3dMapping id="cutterBlades" node="0>0|1|3|1|0|0|0|0|0|1" />
+        <i3dMapping id="cutterBarHydraulicLeftRef" node="0>0|1|3|1|0|0|0|0|0|2" />
+        <i3dMapping id="cutterBarHydraulicRightRef" node="0>0|1|3|1|0|0|0|0|0|3" />
+        <i3dMapping id="ptoInputNodeRight" node="0>0|1|3|1|0|0|0|0|0|5" />
+        <i3dMapping id="cutterBarArmRightRefFrame" node="0>0|1|3|2" />
+        <i3dMapping id="cutterBarArmRight" node="0>0|1|3|2|0" />
+        <i3dMapping id="cutterBarRef" node="0>0|1|3|2|0|0" />
+        <i3dMapping id="cutterBarHydraulicLeft" node="0>0|1|3|3" />
+        <i3dMapping id="cutterBarHydraulicLeftPunch" node="0>0|1|3|3|0" />
+        <i3dMapping id="cutterBarHydraulicRight" node="0>0|1|3|4" />
+        <i3dMapping id="cutterBarHydraulicRightPunch" node="0>0|1|3|4|0" />
+        <i3dMapping id="workAreaStart" node="0>0|2|0|0" />
+        <i3dMapping id="workAreaWidth" node="0>0|2|0|1" />
+        <i3dMapping id="workAreaHeight" node="0>0|2|0|2" />
+        <i3dMapping id="effectNodePlant" node="0>0|3|0|0" />
+        <i3dMapping id="effectNodeFruit" node="0>0|3|0|1" />
+        <i3dMapping id="smokeEmitter" node="0>0|3|1" />
+        <i3dMapping id="workAreaStrawStart" node="0>0|3|2|0" />
+        <i3dMapping id="workAreaStrawWidth" node="0>0|3|2|1" />
+        <i3dMapping id="workAreaStrawHeight" node="0>0|3|2|2" />
+        <i3dMapping id="aiMarkerLeft" node="0>0|4|0" />
+        <i3dMapping id="aiMarkerRight" node="0>0|4|1" />
+        <i3dMapping id="aiMarkerBack" node="0>0|4|2" />
+        <i3dMapping id="aiCollisionNode" node="0>0|4|3" />
+        <i3dMapping id="helianthus5700_cutterBar_component2" node="1>" />
+        <i3dMapping id="cutterBarArmLeftRef" node="1>0" />
+        <i3dMapping id="cutterBarArmRightRef" node="1>1" />
+        <i3dMapping id="cutterBarXRotRef" node="1>2" />
+    </i3dMappings>
+</vehicle>
