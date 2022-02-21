@@ -1,4 +1,7 @@
-## This mod pack for Farming Simulator 22 features your favorite Case IH machinery (Sugar Cane, Cotton and Baling included) but now enhanced with eXtra power, eXtreme speed and eXciting performance! 
+# Xtreme CaseIH Pack
+### This mod pack for Farming Simulator 22 features your favorite Case IH machinery (Sugar Cane, Cotton and Baling included) but now enhanced with eXtra power, eXtreme speed and eXciting performance! 
+
+#### Latest version can be downloaded here: [v1.0.0.0](https://falkkor.io/FS22_snappingAnimalsPack.zip)
 
 ![Xtreme CaseIH Pack Screenshot](/screenshots/xtreme_caseih_screen1.jpg)
 
