@@ -123,7 +123,9 @@ SpeedTiller 465X:
 SpeedTiller 475X: 
     - 16 MPH / 25 KPH
     - $150,000 USD
+```
 
+```
 Changelog:
     - v1.0.0.0 
         - GitHub Release
