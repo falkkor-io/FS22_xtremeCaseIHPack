@@ -1,5 +1,7 @@
 ## This mod pack for Farming Simulator 22 features your favorite Case IH machinery (Sugar Cane, Cotton and Baling included) but now enhanced with eXtra power, eXtreme speed and eXciting performance! 
 
+![Xtreme CaseIH Pack Screenshot](/screenshots/xtreme_caseih_screen1.jpg)
+
 ```
 All store items in this mod feature: 
     - Double the Lifespan for Durability with Titanium Components
