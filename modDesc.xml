@@ -134,7 +134,7 @@
             - info@falkkor.io 
             - https://falkkor.io]]></en>
     </description>
-    <iconFilename>store_xtremecaseihpack.png</iconFilename>
+    <iconFilename>icon.dds</iconFilename>
     <multiplayer supported="true" />
     <storeItems>
         <storeItem xmlFilename="vehicles/magnum7250XPro/magnum7250XPro.xml"/>
